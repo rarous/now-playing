@@ -2,6 +2,10 @@
 
 WebAudio based server for recognizing now plaing music in audio stream.
 
+## Armbian setting
+
+This server is intended to run on Raspberry Pi 3B+ with Armbian distribution.
+
 WebAudio need audio backend installed on the machine:
 
 ```shell
