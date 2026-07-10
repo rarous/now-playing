@@ -3,10 +3,165 @@
 
 __metadata:
   version: 10
-  cacheKey: 10c0
+  cacheKey: 10
+
+"@thi.ng/api@npm:^8.12.27":
+  version: 8.12.27
+  resolution: "@thi.ng/api@npm:8.12.27"
+  checksum: 10/8e1859dbd1fe2e49c14c980ac7713c063fb5961763f190804b9ed6ae35e7f9560656fd447c24618c50273ededa3a4bb079387729e1ab6243f1ce08e633bb4ebe
+  languageName: node
+  linkType: hard
+
+"@thi.ng/atom@npm:^5.3.68":
+  version: 5.3.68
+  resolution: "@thi.ng/atom@npm:5.3.68"
+  dependencies:
+    "@thi.ng/api": "npm:^8.12.27"
+    "@thi.ng/equiv": "npm:^2.1.116"
+    "@thi.ng/errors": "npm:^2.6.16"
+    "@thi.ng/paths": "npm:^5.2.46"
+  checksum: 10/45bb94b0529fe6fcea77bd51b3c8856d6e61d6df227368229b3cbc50346ea8f3d3bf72a834b3e86a8dd1e18787244cd0265c821c735f01f762893aa1afdc4741
+  languageName: node
+  linkType: hard
+
+"@thi.ng/checks@npm:^3.10.1":
+  version: 3.10.1
+  resolution: "@thi.ng/checks@npm:3.10.1"
+  checksum: 10/1a2a0a1809959329e569f5de6c9407442b1b5504485630af7ae4d71152f13dd9ab13138813a37e10f747a2137c3337f996ab33af3a8128657994c26bdd1be44b
+  languageName: node
+  linkType: hard
+
+"@thi.ng/equiv@npm:^2.1.116":
+  version: 2.1.116
+  resolution: "@thi.ng/equiv@npm:2.1.116"
+  checksum: 10/81131b85211aacbf88183d3ef3b5b6ec930040df4a99414e6aefad99427051c0a8d68e572292f4efab97d2b09175974a8084f7a9755a60591de7c41eecf22d24
+  languageName: node
+  linkType: hard
+
+"@thi.ng/errors@npm:^2.6.16":
+  version: 2.6.16
+  resolution: "@thi.ng/errors@npm:2.6.16"
+  checksum: 10/92a5e26aa1ce3e9a4f5cf9676bd8cb4bdbaca61e8fa527efa0edc200b67fd7bee4deae7e51b542b6e84879ed78eb91ed7b1a01374a08e997de2518bf5ac77df2
+  languageName: node
+  linkType: hard
+
+"@thi.ng/paths@npm:^5.2.46":
+  version: 5.2.46
+  resolution: "@thi.ng/paths@npm:5.2.46"
+  dependencies:
+    "@thi.ng/api": "npm:^8.12.27"
+    "@thi.ng/checks": "npm:^3.10.1"
+    "@thi.ng/errors": "npm:^2.6.16"
+  checksum: 10/1521def548eeb36621797a083eb4b813dd0a0c1b849eb07b18a8817e763362fb659fca91bcff4a8480801182ec7671b9a295a74f6673589b8d248cce342ae10d
+  languageName: node
+  linkType: hard
+
+"caller@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "caller@npm:1.1.0"
+  checksum: 10/b7815613d89c29fbfd3ee086094e678c9c66fdf913e1840204aa1be09755f2c173daf12eb44ad38283980c8d5c41d4474bb8fefb14de530895c2bc616920fe24
+  languageName: node
+  linkType: hard
+
+"data-uri-to-buffer@npm:^4.0.0":
+  version: 4.0.1
+  resolution: "data-uri-to-buffer@npm:4.0.1"
+  checksum: 10/0d0790b67ffec5302f204c2ccca4494f70b4e2d940fea3d36b09f0bb2b8539c2e86690429eb1f1dc4bcc9e4df0644193073e63d9ee48ac9fce79ec1506e4aa4c
+  languageName: node
+  linkType: hard
+
+"fetch-blob@npm:^3.1.2, fetch-blob@npm:^3.1.4":
+  version: 3.2.0
+  resolution: "fetch-blob@npm:3.2.0"
+  dependencies:
+    node-domexception: "npm:^1.0.0"
+    web-streams-polyfill: "npm:^3.0.3"
+  checksum: 10/5264ecceb5fdc19eb51d1d0359921f12730941e333019e673e71eb73921146dceabcb0b8f534582be4497312d656508a439ad0f5edeec2b29ab2e10c72a1f86b
+  languageName: node
+  linkType: hard
+
+"formdata-polyfill@npm:^4.0.10":
+  version: 4.0.10
+  resolution: "formdata-polyfill@npm:4.0.10"
+  dependencies:
+    fetch-blob: "npm:^3.1.2"
+  checksum: 10/9b5001d2edef3c9449ac3f48bd4f8cc92e7d0f2e7c1a5c8ba555ad4e77535cc5cf621fabe49e97f304067037282dd9093b9160a3cb533e46420b446c4e6bc06f
+  languageName: node
+  linkType: hard
+
+"node-domexception@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "node-domexception@npm:1.0.0"
+  checksum: 10/e332522f242348c511640c25a6fc7da4f30e09e580c70c6b13cb0be83c78c3e71c8d4665af2527e869fc96848924a4316ae7ec9014c091e2156f41739d4fa233
+  languageName: node
+  linkType: hard
+
+"node-fetch@npm:^3.3.2":
+  version: 3.3.2
+  resolution: "node-fetch@npm:3.3.2"
+  dependencies:
+    data-uri-to-buffer: "npm:^4.0.0"
+    fetch-blob: "npm:^3.1.4"
+    formdata-polyfill: "npm:^4.0.10"
+  checksum: 10/24207ca8c81231c7c59151840e3fded461d67a31cf3e3b3968e12201a42f89ce4a0b5fb7079b1fa0a4655957b1ca9257553200f03a9f668b45ebad265ca5593d
+  languageName: node
+  linkType: hard
+
+"node-web-audio-api@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "node-web-audio-api@npm:2.0.0"
+  dependencies:
+    caller: "npm:^1.1.0"
+    node-fetch: "npm:^3.3.2"
+    webidl-conversions: "npm:^8.0.1"
+  checksum: 10/61714ec2481877d7d8b148366cd5e9d121a7ebba55f3092dd3ca52c373ceb3bfcba638755616e0b30d1f1a1f790bb17d6ff768383fdc0ac0cd647b63e2b08271
+  languageName: node
+  linkType: hard
 
 "now-playing@workspace:.":
   version: 0.0.0-use.local
   resolution: "now-playing@workspace:."
+  dependencies:
+    "@thi.ng/atom": "npm:^5.3.68"
+    node-web-audio-api: "npm:^2.0.0"
+    rxjs: "npm:^7.8.2"
+    shazamio-core: "npm:^1.3.1"
   languageName: unknown
   linkType: soft
+
+"rxjs@npm:^7.8.2":
+  version: 7.8.2
+  resolution: "rxjs@npm:7.8.2"
+  dependencies:
+    tslib: "npm:^2.1.0"
+  checksum: 10/03dff09191356b2b87d94fbc1e97c4e9eb3c09d4452399dddd451b09c2f1ba8d56925a40af114282d7bc0c6fe7514a2236ca09f903cf70e4bbf156650dddb49d
+  languageName: node
+  linkType: hard
+
+"shazamio-core@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "shazamio-core@npm:1.3.1"
+  checksum: 10/387e390c3bbb8d6ef57b4fd2721fe16682ed01277a9f918dacf877a58be1312875961cfd527b05b32b60328c784fc64d781e4a965e921258fa213e51060f6703
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.1.0":
+  version: 2.8.1
+  resolution: "tslib@npm:2.8.1"
+  checksum: 10/3e2e043d5c2316461cb54e5c7fe02c30ef6dccb3384717ca22ae5c6b5bc95232a6241df19c622d9c73b809bea33b187f6dbc73030963e29950c2141bc32a79f7
+  languageName: node
+  linkType: hard
+
+"web-streams-polyfill@npm:^3.0.3":
+  version: 3.3.3
+  resolution: "web-streams-polyfill@npm:3.3.3"
+  checksum: 10/8e7e13501b3834094a50abe7c0b6456155a55d7571312b89570012ef47ec2a46d766934768c50aabad10a9c30dd764a407623e8bfcc74fcb58495c29130edea9
+  languageName: node
+  linkType: hard
+
+"webidl-conversions@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "webidl-conversions@npm:8.0.1"
+  checksum: 10/0f7007311f1fc257a8e406dd236f13b61fb57cf0fddb476aec33457d2d0add2d012d6df0eeb00934399238e3f3b9dad30f59dc6ac83024ae0ebd5a518bf365e8
+  languageName: node
+  linkType: hard
