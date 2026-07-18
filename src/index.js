@@ -33,9 +33,9 @@ function mergeBuffers(bufferArray) {
   const recLength = 128 * bufferArray.length;
   const result = new Float32Array(recLength);
   let offset = 0;
-  for (let i = 0; i < bufferArray.length; i++) {
-    result.set(bufferArray[i], offset);
-    offset += bufferArray[i].length;
+  for (const buf of bufferArray) {
+    result.set(buf, offset);
+    offset += buf.length;
   }
   return result;
 }
@@ -76,7 +76,7 @@ function encodeWAV(samples, sampleRate) {
 }
 
 async function fetchShazamData(signature) {
-    console.log(signature);
+  console.log(signature);
   const resp = await fetch("https://hckr.tv/api/v1/shazam", {
     method: "POST",
     headers: {
