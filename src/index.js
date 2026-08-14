@@ -1,7 +1,13 @@
-import {auditTime, bufferTime, map, tap, switchMap, Subject} from "rxjs";
+import {auditTime, bufferTime, map, switchMap, Subject} from "rxjs";
 import {recognizeBytes} from "shazamio-core";
-import {defAtom} from "@thi.ng/atom";
-import {AudioContext, AudioWorkletNode, ChannelMergerNode, MediaStreamAudioSourceNode, mediaDevices} from "node-web-audio-api";
+import {defAtom, defHistory} from "@thi.ng/atom";
+import {
+  AudioContext,
+  AudioWorkletNode,
+  ChannelMergerNode,
+  MediaStreamAudioSourceNode,
+  mediaDevices
+} from "node-web-audio-api";
 
 /** @typedef {import("@thi.ng/atom").IAtom} Atom */
 
@@ -76,7 +82,6 @@ function encodeWAV(samples, sampleRate) {
 }
 
 async function fetchShazamData(signature) {
-  console.log(signature);
   const resp = await fetch("https://hckr.tv/api/v1/shazam", {
     method: "POST",
     headers: {
@@ -125,6 +130,7 @@ async function* getTrackInfo(bytes, offset, seconds) {
 export async function main(init) {
   const {port, sampleRate, targetSampleRate = 16_000, sampleSec = 5, refreshSec = 30} = init;
   const state = defAtom({});
+  const history = defHistory(state);
   const audioStream = new Subject();
   const samples = audioStream.pipe(
     bufferTime(sampleSec * 1_000),
@@ -134,9 +140,9 @@ export async function main(init) {
     map(x => encodeWAV(x, targetSampleRate)),
     switchMap(x => getTrackInfo(x, 0, sampleSec)),
   );
-  samples.subscribe(x => state.reset(x));
+  samples.subscribe(x => history.reset(x));
   port.onmessage = e => audioStream.next(e.data);
-  return state;
+  return history;
 }
 
 let audio = true;
@@ -155,11 +161,11 @@ input.connect(merger, 0, 1);
 merger.connect(shazam);
 
 const state = await main({
-    port: shazam.port,
-    sampleRate: audioCtx.sampleRate,
-    sampleSec,
-    refreshSec,
+  port: shazam.port,
+  sampleRate: audioCtx.sampleRate,
+  sampleSec,
+  refreshSec,
 });
 state.addWatch("render", (id, prev, x) => {
-    console.log(`${x.subtitle} - ${x.title}`);
+  console.log(`${x.subtitle} - ${x.title}`);
 });
