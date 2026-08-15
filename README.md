@@ -18,3 +18,11 @@ sudo mv /etc/ld.so.conf.d/pipewire-jack-aarch64-linux-gnu.conf /etc/ld.so.conf.d
 Pipewire needs to be properly configured.
 https://docs.pipewire.org/page_man_pipewire-jack_conf_5.html
 https://mathieu-requillart.medium.com/my-ultimate-guide-to-the-raspberry-pi-audio-server-i-wanted-pipewire-tcp-server-b6016d9360c5
+
+## Bluetooth
+
+For displaying recognized music on the LED screen we need to install bluetooth libraries: 
+
+```shell
+sudo apt install bluetooth bluez libbluetooth-dev libudev-dev
+```
