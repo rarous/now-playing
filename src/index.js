@@ -1,13 +1,14 @@
-import {auditTime, bufferTime, map, switchMap, Subject} from "rxjs";
-import {recognizeBytes} from "shazamio-core";
-import {defAtom, defHistory} from "@thi.ng/atom";
+import noble from "@stoprocent/noble";
+import { defAtom, defHistory } from "@thi.ng/atom";
 import {
   AudioContext,
   AudioWorkletNode,
   ChannelMergerNode,
   MediaStreamAudioSourceNode,
-  mediaDevices
+  mediaDevices,
 } from "node-web-audio-api";
+import { auditTime, bufferTime, map, Subject, switchMap } from "rxjs";
+import { recognizeBytes } from "shazamio-core";
 
 /** @typedef {import("@thi.ng/atom").IAtom} Atom */
 
@@ -49,7 +50,7 @@ function mergeBuffers(bufferArray) {
 function floatTo16BitPCM(output, offset, input) {
   for (let i = 0; i < input.length; i++, offset += 2) {
     const s = Math.max(-1, Math.min(1, input[i]));
-    output.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+    output.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
   }
 }
 
@@ -63,10 +64,10 @@ function encodeWAV(samples, sampleRate) {
   const buffer = new ArrayBuffer(44 + samples.length * 2);
   const view = new DataView(buffer);
 
-  writeString(view, 0, 'RIFF');
+  writeString(view, 0, "RIFF");
   view.setUint32(4, 32 + samples.length * 2, true);
-  writeString(view, 8, 'WAVE');
-  writeString(view, 12, 'fmt ');
+  writeString(view, 8, "WAVE");
+  writeString(view, 12, "fmt ");
   view.setUint32(16, 16, true);
   view.setUint16(20, 1, true);
   view.setUint16(22, 1, true);
@@ -74,7 +75,7 @@ function encodeWAV(samples, sampleRate) {
   view.setUint32(28, sampleRate * 2, true);
   view.setUint16(32, 2, true);
   view.setUint16(34, 16, true);
-  writeString(view, 36, 'data');
+  writeString(view, 36, "data");
   view.setUint32(40, samples.length * 2, true);
   floatTo16BitPCM(view, 44, samples);
 
@@ -86,9 +87,9 @@ async function fetchShazamData(signature) {
     method: "POST",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({signature}),
+    body: JSON.stringify({ signature }),
   });
   return resp.json();
 }
@@ -99,7 +100,7 @@ function withDispose(signature) {
       return function () {
         return this.free();
       };
-    }
+    },
   });
 }
 
@@ -112,7 +113,10 @@ function withDispose(signature) {
 async function* getTrackInfo(bytes, offset, seconds) {
   const signatures = recognizeBytes(bytes, offset, seconds);
   for (using signature of signatures.map(withDispose)) {
-    const shazamData = await fetchShazamData({samplems: signature.samplems, uri: signature.uri});
+    const shazamData = await fetchShazamData({
+      samplems: signature.samplems,
+      uri: signature.uri,
+    });
     if (shazamData.matches.length) yield shazamData.track;
   }
 }
@@ -128,7 +132,13 @@ async function* getTrackInfo(bytes, offset, seconds) {
  * @returns {Promise<Atom>}
  */
 export async function main(init) {
-  const {port, sampleRate, targetSampleRate = 16_000, sampleSec = 5, refreshSec = 30} = init;
+  const {
+    port,
+    sampleRate,
+    targetSampleRate = 16_000,
+    sampleSec = 5,
+    refreshSec = 30,
+  } = init;
   const state = defAtom({});
   const history = defHistory(state);
   const audioStream = new Subject();
@@ -145,17 +155,17 @@ export async function main(init) {
   return history;
 }
 
-let audio = true;
-let refreshSec = 30;
-let sampleSec = 5;
+const audio = true;
+const refreshSec = 30;
+const sampleSec = 5;
 
-let mediaStream = await mediaDevices.getUserMedia({audio});
-let audioCtx = new AudioContext();
+const mediaStream = await mediaDevices.getUserMedia({ audio });
+const audioCtx = new AudioContext();
 await audioCtx.resume();
 await audioCtx.audioWorklet.addModule("./shazam-processor.js");
-let input = new MediaStreamAudioSourceNode(audioCtx, {mediaStream});
-let shazam = new AudioWorkletNode(audioCtx, "shazam-processor");
-let merger = new ChannelMergerNode(audioCtx, {channelCount: 1});
+const input = new MediaStreamAudioSourceNode(audioCtx, { mediaStream });
+const shazam = new AudioWorkletNode(audioCtx, "shazam-processor");
+const merger = new ChannelMergerNode(audioCtx, { channelCount: 1 });
 input.connect(merger, 0, 0);
 input.connect(merger, 0, 1);
 merger.connect(shazam);
@@ -169,3 +179,6 @@ const state = await main({
 state.addWatch("render", (id, prev, x) => {
   console.log(`${x.subtitle} - ${x.title}`);
 });
+
+// TODO: add support for LED Display
+// - [ ] https://github.com/stoprocent/noble
