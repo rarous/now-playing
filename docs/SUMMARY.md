@@ -15,7 +15,7 @@ This documentation set provides complete protocol specifications for the P0AD LE
 
 | File | Description | Lines | Status |
 |------|-------------|-------|--------|
-| [`IMPLEMENTATION_GUIDE.md`](IMPLEMENTATION_GUIDE.md) | Step-by-step guide for Devstral Small 2 to implement the protocol | ~1300 | ✅ Complete |
+| [`IMPLEMENTATION_GUIDE.md`](IMPLEMENTATION_GUIDE.md) | Step-by-step guide for Devstral Small 2: 2 modules (Text Rendering + Device Protocol) | ~1050 | ✅ Complete |
 
 ### 📁 `/docs/protocol/`
 
@@ -27,7 +27,7 @@ This documentation set provides complete protocol specifications for the P0AD LE
 | [`p0ad-handshake.md`](protocol/p0ad-handshake.md) | Initial BLE handshake protocol with challenge-response | 418 | ✅ Complete |
 | [`nodejs-implementation.md`](protocol/nodejs-implementation.md) | Complete Node.js implementation with ESM, async/await, @stoprocent/noble | 1254 | ✅ Updated |
 
-**Total Documentation:** ~17,600 lines (including implementation guide)
+**Total Documentation:** ~17,300 lines (including implementation guide)
 
 **New/Updated Content:**
 - ✅ Multi-character text handling with PixelTextBean
@@ -308,8 +308,8 @@ If you have questions about the protocol or need clarification on any part of th
 ## Changelog
 
 ### 2026-08-24
-- Added `IMPLEMENTATION_GUIDE.md` with step-by-step instructions for Devstral Small 2
-- Updated `SUMMARY.md` with new implementation guide reference
+- Added `IMPLEMENTATION_GUIDE.md` with 2-module architecture (Text Rendering + Device Protocol)
+- Updated `SUMMARY.md` with simplified implementation guide reference
 - Updated `p0ad-text-rendering.md` with complete text rendering pipeline
 - Updated `p0ad-binary-format.md` with file format and multi-packet details
 - Updated `nodejs-implementation.md` with ESM, async/await, @stoprocent/noble
