@@ -11,6 +11,12 @@ This documentation set provides complete protocol specifications for the P0AD LE
 
 ## Documentation Files
 
+### 📁 `/docs/`
+
+| File | Description | Lines | Status |
+|------|-------------|-------|--------|
+| [`IMPLEMENTATION_GUIDE.md`](IMPLEMENTATION_GUIDE.md) | Step-by-step guide for Devstral Small 2 to implement the protocol | ~1300 | ✅ Complete |
+
 ### 📁 `/docs/protocol/`
 
 | File | Description | Lines | Status |
@@ -21,7 +27,7 @@ This documentation set provides complete protocol specifications for the P0AD LE
 | [`p0ad-handshake.md`](protocol/p0ad-handshake.md) | Initial BLE handshake protocol with challenge-response | 418 | ✅ Complete |
 | [`nodejs-implementation.md`](protocol/nodejs-implementation.md) | Complete Node.js implementation with ESM, async/await, @stoprocent/noble | 1254 | ✅ Updated |
 
-**Total Documentation:** ~3,070 lines
+**Total Documentation:** ~17,600 lines (including implementation guide)
 
 **New/Updated Content:**
 - ✅ Multi-character text handling with PixelTextBean
@@ -276,12 +282,13 @@ If you find errors or have additional information:
 ## Files Created/Updated
 
 ```
+✓ /Users/rarous/Developer/rarous/now-playing/docs/IMPLEMENTATION_GUIDE.md (NEW)
+✓ /Users/rarous/Developer/rarous/now-playing/docs/SUMMARY.md (UPDATED)
 ✓ /Users/rarous/Developer/rarous/now-playing/docs/protocol/README.md
 ✓ /Users/rarous/Developer/rarous/now-playing/docs/protocol/p0ad-text-rendering.md (UPDATED)
 ✓ /Users/rarous/Developer/rarous/now-playing/docs/protocol/p0ad-binary-format.md (UPDATED)
 ✓ /Users/rarous/Developer/rarous/now-playing/docs/protocol/p0ad-handshake.md
 ✓ /Users/rarous/Developer/rarous/now-playing/docs/protocol/nodejs-implementation.md (UPDATED)
-✓ /Users/rarous/Developer/rarous/now-playing/docs/SUMMARY.md (UPDATED)
 ```
 
 ## Next Steps
@@ -301,6 +308,8 @@ If you have questions about the protocol or need clarification on any part of th
 ## Changelog
 
 ### 2026-08-24
+- Added `IMPLEMENTATION_GUIDE.md` with step-by-step instructions for Devstral Small 2
+- Updated `SUMMARY.md` with new implementation guide reference
 - Updated `p0ad-text-rendering.md` with complete text rendering pipeline
 - Updated `p0ad-binary-format.md` with file format and multi-packet details
 - Updated `nodejs-implementation.md` with ESM, async/await, @stoprocent/noble
